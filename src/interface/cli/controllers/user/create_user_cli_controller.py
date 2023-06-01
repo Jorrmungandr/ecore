@@ -5,6 +5,8 @@ from src.application.exceptions.user.invalid_confirm_password_exception import I
 
 from src.application.usecases.user.create_user_usecase import CreateUserUsecase
 
+from src.infrastructure.cli.helpers.clear_console import clear_console
+
 class CreateUserCLIController:
     def __init__(self):
         self.usecase = CreateUserUsecase()
@@ -19,7 +21,9 @@ class CreateUserCLIController:
 
             result = self.usecase.execute(name, role, email, password, confirm_password)
 
-            print(result)
+            clear_console()
+            print('Usuário criado com sucesso:')
+            print(f'{result}\n')
 
             return result
         except InvalidParamsException as error:

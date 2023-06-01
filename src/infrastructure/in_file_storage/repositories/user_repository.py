@@ -9,7 +9,7 @@ class UserRepository:
                 if email != user_email:
                     continue
 
-                user_entity = UserEntity(_id, name, role, email, password)
+                user_entity = UserEntity(int(_id), name, role, email, password)
 
                 return user_entity
 
