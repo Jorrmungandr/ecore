@@ -19,6 +19,6 @@ class UserRepository:
         with open('./db/users.csv', 'r+', encoding='utf8') as csv_file:
             _id = len(csv_file.readlines())
 
-            csv_file.write(f'\n{_id},{name},{email},{password}')
+            csv_file.write(f'\n{_id},{name},{role},{email},{password}')
 
             return UserEntity(_id, name, role, email, password)

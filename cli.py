@@ -16,6 +16,7 @@ try:
     while not auth_user:
         auth_user = login_controller.execute()
 
+    # Menu cycle (recursion)
     def render_menu(render_path):
         clear_console()
 
@@ -41,6 +42,7 @@ try:
         else:
             print('0 - Voltar\n')
 
+        # Input select cycle
         while True:
             selected_option = input('Opção selecionada: ')
 

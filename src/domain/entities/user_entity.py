@@ -8,7 +8,7 @@ user_roles = (
     'facilities',
     'controladoria',
     'conselho',
-    'c-level'
+    'c_level'
 )
 
 

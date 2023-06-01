@@ -2,6 +2,7 @@ from getpass import getpass
 
 from src.application.exceptions.user.invalid_params_exception import InvalidParamsException
 from src.application.exceptions.user.invalid_confirm_password_exception import InvalidConfirmPasswordException
+from src.application.exceptions.user.user_already_exists_exception import UserAlreadyExistsException
 
 from src.application.usecases.user.create_user_usecase import CreateUserUsecase
 
@@ -27,6 +28,8 @@ class CreateUserCLIController:
 
             return result
         except InvalidParamsException as error:
-            print(f'Erro de validação de parâmetro: {error.message}')
+            print(f'\nErro de validação de parâmetro: {error.message}')
         except InvalidConfirmPasswordException:
-            print('A confirmação de senha está diferente da senha')
+            print('\nA confirmação de senha está diferente da senha')
+        except UserAlreadyExistsException:
+            print('\nUm usuário com esse email já está cadastrado no banco')
