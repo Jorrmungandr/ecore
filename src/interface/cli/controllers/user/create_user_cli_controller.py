@@ -11,12 +11,13 @@ class CreateUserCLIController:
 
     def execute(self):
         try:
-            name = input('Digite o seu nome: ')
-            email = input('Digite o seu email: ')
-            password = getpass('Digite a sua senha: ')
-            confirm_password = getpass('Confirme a sua senha: ')
+            name = input('Digite o nome: ')
+            email = input('Digite o email: ')
+            role = input('Digite o tipo de usuário: ')
+            password = getpass('Digite a senha: ')
+            confirm_password = getpass('Confirme a senha: ')
 
-            result = self.usecase.execute(name, email, password, confirm_password)
+            result = self.usecase.execute(name, role, email, password, confirm_password)
 
             print(result)
 

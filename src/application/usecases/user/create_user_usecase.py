@@ -7,7 +7,7 @@ class CreateUserUsecase:
     def __init__(self):
         self.repository = UserRepository()
 
-    def execute(self, name, email, password, confirm_password):
+    def execute(self, name, role, email, password, confirm_password):
         if ',' in name:
             raise InvalidParamsException('Nome inválido')
         if ',' in email:
@@ -18,6 +18,6 @@ class CreateUserUsecase:
         if password != confirm_password:
             raise InvalidConfirmPasswordException('As senhas estão diferentes')
 
-        created_user = self.repository.create_user(name, email, password)
+        created_user = self.repository.create_user(name, role, email, password)
 
         return created_user
