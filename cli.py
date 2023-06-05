@@ -13,9 +13,15 @@ try:
     # Login Cycle
     login_controller = LoginCLIController()
 
-    auth_user = None
+    clear_console()
+    print('Login\n')
+    auth_user = login_controller.execute()
 
     while not auth_user:
+        clear_console()
+        print('Login\n')
+        print('Credenciais inválidas, tente novamente\n')
+
         auth_user = login_controller.execute()
 
     authorized_menu_tree = filter_menu_tree_by_rbac(menu_tree, auth_user.role)
