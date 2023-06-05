@@ -19,7 +19,7 @@ class CreateUserUsecase:
             raise InvalidParamsException('Senha inválida')
 
         if role not in user_roles:
-            role_list = "\n".join(list(user_roles))
+            role_list = '\n'.join(list(user_roles))
             raise InvalidParamsException(f'Tipo de usuário inválido, tipos válidos:\n{role_list}')
 
         if password != confirm_password:
@@ -28,7 +28,7 @@ class CreateUserUsecase:
         user_already_exists = self.repository.get_user_by_email(email)
 
         if user_already_exists:
-            raise UserAlreadyExistsException('Um usuário com esse email já está cadastrado no banco')
+            raise UserAlreadyExistsException('Um usuário com esse email já está cadastrado')
 
         created_user = self.repository.create_user(name, role, email, password)
 

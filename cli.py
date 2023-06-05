@@ -1,11 +1,13 @@
-import os
 import sys
 
 from src.interface.cli.controllers.auth.login_cli_controller import LoginCLIController
 
-from src.infrastructure.cli.menu_paths import menu_paths
+from src.infrastructure.cli.menu_tree import menu_tree
 from src.infrastructure.cli.helpers.translate_paths import path_translation
 from src.infrastructure.cli.helpers.clear_console import clear_console
+from src.infrastructure.cli.helpers.authorized_menu_paths import filter_menu_tree_by_rbac
+
+from src.domain.controllers.cli_controller import CLIController
 
 try:
     # Login Cycle
@@ -16,26 +18,28 @@ try:
     while not auth_user:
         auth_user = login_controller.execute()
 
+    authorized_menu_tree = filter_menu_tree_by_rbac(menu_tree, auth_user.role)
+
     # Menu cycle (recursion)
-    def render_menu(render_path):
+    def render_menu(node_path):
         clear_console()
 
-        is_main_menu = len(render_path) == 0
+        is_main_menu = len(node_path) == 0
 
         if is_main_menu:
             print('Menu principal\n')
         else:
-            print(f'Menu {path_translation[".".join(render_path)]}\n')
+            print(f'Menu {path_translation[".".join(node_path)]}\n')
 
-        current_menu = menu_paths
+        current_menu = authorized_menu_tree
 
-        for key in render_path:
+        for key in node_path:
             current_menu = current_menu[key]
 
         current_keys = list(current_menu.keys())
 
         for index, key in enumerate(current_keys):
-            print(f'{index + 1} - {path_translation[".".join([*render_path, key])]}\n')
+            print(f'{index + 1} - {path_translation[".".join([*node_path, key])]}\n')
 
         if is_main_menu:
             print('0 - Sair\n')
@@ -60,23 +64,24 @@ try:
                 if is_main_menu:
                     sys.exit(0)
                 else:
-                    render_menu(render_path[:-1])
+                    render_menu(node_path[:-1])
 
             selected_key = current_keys[selected_index - 1]
 
             selection = current_menu[current_keys[selected_index - 1]]
 
-            if isinstance(selection, dict):
-                render_menu([*render_path, selected_key])
-            else:
-                os.system('cls||clear')
-                print(f'{path_translation[".".join([*render_path, key])]}\n')
+            if isinstance(selection, CLIController):
+                clear_console()
+                print(f'{path_translation[".".join([*node_path, key])]}\n')
 
+                selection.user_requester = auth_user
                 selection.execute()
 
                 input('\nPressione Enter para voltar para o menu principal')
 
                 render_menu([])
+            else:
+                render_menu([*node_path, selected_key])
 
     render_menu([])
 except KeyboardInterrupt:

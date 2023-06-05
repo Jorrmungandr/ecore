@@ -6,9 +6,13 @@ from src.application.exceptions.user.user_already_exists_exception import UserAl
 
 from src.application.usecases.user.create_user_usecase import CreateUserUsecase
 
-from src.infrastructure.cli.helpers.clear_console import clear_console
+from src.domain.controllers.cli_controller import CLIController
 
-class CreateUserCLIController:
+from src.infrastructure.cli.helpers.clear_console import clear_console
+from src.infrastructure.helpers.authorize import authorize
+
+@authorize('admin')
+class CreateUserCLIController(CLIController):
     def __init__(self):
         self.usecase = CreateUserUsecase()
 
@@ -23,8 +27,8 @@ class CreateUserCLIController:
             result = self.usecase.execute(name, role, email, password, confirm_password)
 
             clear_console()
-            print('Usuário criado com sucesso:')
-            print(f'{result}\n')
+            print('Usuário criado com sucesso:\n')
+            print(result)
 
             return result
         except InvalidParamsException as error:
