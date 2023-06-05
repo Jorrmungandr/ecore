@@ -83,7 +83,7 @@ try:
                 selection.user_requester = auth_user
                 selection.execute()
 
-                input('\nPressione Enter para voltar para o menu principal')
+                input('\nPressione qualquer tecla para retornar para o menu principal')
 
                 render_menu([])
             else:
