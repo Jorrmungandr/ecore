@@ -31,4 +31,4 @@ class UserEntity:
         self.password = password
 
     def __str__(self):
-        return f'id: {self.id}\nname: {self.name}\nrole: {self.role}\nemail: {self.email}'
+        return f'ID: {self.id}\nNome: {self.name}\nTipo: {self.role}\nEmail: {self.email}'

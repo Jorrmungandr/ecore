@@ -1,6 +1,6 @@
 from src.domain.controllers.cli_controller import CLIController
 
-def filter_menu_tree_by_authorization(menu_tree, user_requester_role):
+def filter_menu_tree_by_rbac(menu_tree, user_requester_role):
     # Filter the menu tree recursively so that the only leafs (controllers)
     # left are the ones that include `user_requester_role` in
     # the `CLIController.allowed_roles` property

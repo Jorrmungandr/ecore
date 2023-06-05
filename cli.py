@@ -5,7 +5,7 @@ from src.interface.cli.controllers.auth.login_cli_controller import LoginCLICont
 from src.infrastructure.cli.menu_tree import menu_tree
 from src.infrastructure.cli.helpers.translate_paths import path_translation
 from src.infrastructure.cli.helpers.clear_console import clear_console
-from src.infrastructure.cli.helpers.authorized_menu_paths import filter_menu_tree_by_authorization
+from src.infrastructure.cli.helpers.authorized_menu_paths import filter_menu_tree_by_rbac
 
 from src.domain.controllers.cli_controller import CLIController
 
@@ -18,7 +18,7 @@ try:
     while not auth_user:
         auth_user = login_controller.execute()
 
-    authorized_menu_tree = filter_menu_tree_by_authorization(menu_tree, auth_user.role)
+    authorized_menu_tree = filter_menu_tree_by_rbac(menu_tree, auth_user.role)
 
     # Menu cycle (recursion)
     def render_menu(node_path):
