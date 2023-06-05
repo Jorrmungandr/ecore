@@ -13,6 +13,8 @@ class UserRepository:
 
                 return user_entity
 
+            csv_file.close()
+
             return None
 
     def create_user(self, name, role, email, password):
@@ -20,5 +22,7 @@ class UserRepository:
             _id = len(csv_file.readlines())
 
             csv_file.write(f'\n{_id},{name},{role},{email},{password}')
+
+            csv_file.close()
 
             return UserEntity(_id, name, role, email, password)
