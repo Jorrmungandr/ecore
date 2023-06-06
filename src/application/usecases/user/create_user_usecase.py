@@ -1,26 +1,24 @@
-from src.application.exceptions.user.invalid_params_exception import InvalidParamsException
 from src.application.exceptions.user.invalid_confirm_password_exception import InvalidConfirmPasswordException
 from src.application.exceptions.user.user_already_exists_exception import UserAlreadyExistsException
 
 from src.infrastructure.in_file_storage.repositories.user_repository import UserRepository
 
-from src.domain.entities.user_entity import user_roles
+from src.domain.entities.user_entity import UserEntity
 
 class CreateUserUsecase:
     def __init__(self):
         self.repository = UserRepository()
 
     def execute(self, name, role, email, password, confirm_password):
-        if ',' in name:
-            raise InvalidParamsException('Nome inválido')
-        if ',' in email:
-            raise InvalidParamsException('Email inválido')
-        if ',' in password:
-            raise InvalidParamsException('Senha inválida')
+        user_to_create = UserEntity({
+            'id': self.repository.count() + 1,
+            'name': name,
+            'role': role,
+            'email': email,
+            'password': password
+        })
 
-        if role not in user_roles:
-            role_list = '\n'.join(list(user_roles))
-            raise InvalidParamsException(f'Tipo de usuário inválido, tipos válidos:\n{role_list}')
+        user_to_create.validate()
 
         if password != confirm_password:
             raise InvalidConfirmPasswordException('As senhas estão diferentes')
@@ -30,6 +28,4 @@ class CreateUserUsecase:
         if user_already_exists:
             raise UserAlreadyExistsException('Um usuário com esse email já está cadastrado')
 
-        created_user = self.repository.create_user(name, role, email, password)
-
-        return created_user
+        return self.repository.create_user(user_to_create)
