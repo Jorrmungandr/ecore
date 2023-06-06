@@ -1,6 +1,6 @@
 from getpass import getpass
+from schematics.exceptions import DataError
 
-from src.application.exceptions.user.invalid_params_exception import InvalidParamsException
 from src.application.exceptions.user.invalid_confirm_password_exception import InvalidConfirmPasswordException
 from src.application.exceptions.user.user_already_exists_exception import UserAlreadyExistsException
 
@@ -31,8 +31,8 @@ class CreateUserCLIController(CLIController):
             print(result)
 
             return result
-        except InvalidParamsException as error:
-            print(f'\nErro de validação de parâmetro: {error.message}')
+        except DataError as error:
+            print(f'\nErro de validação de parâmetro: {", ".join(error.to_primitive().keys())}')
         except InvalidConfirmPasswordException:
             print('\nA confirmação de senha está diferente da senha')
         except UserAlreadyExistsException:

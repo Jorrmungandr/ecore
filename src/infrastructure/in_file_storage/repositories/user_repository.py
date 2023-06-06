@@ -1,8 +1,10 @@
 from src.domain.entities.user_entity import UserEntity
 
 class UserRepository:
+    file_path = './db/users.csv'
+
     def get_user_by_email(self, user_email):
-        with open('./db/users.csv', 'r', encoding='utf8') as csv_file:
+        with open(self.file_path, 'r', encoding='utf8') as csv_file:
             for user_line in csv_file.readlines()[1:]:
                 _id, name, role, email, password = user_line.strip().split(',')
 
@@ -24,7 +26,7 @@ class UserRepository:
             return None
 
     def create_user(self, user: UserEntity):
-        with open('./db/users.csv', 'a', encoding='utf8') as csv_file:
+        with open(self.file_path, 'a', encoding='utf8') as csv_file:
             _id, name, role, email, password = user.values()
 
             line = ','.join([str(_id), name, role, email, password])
@@ -36,7 +38,7 @@ class UserRepository:
             return user
 
     def count(self):
-        with open('./db/users.csv', 'r+', encoding='utf8') as csv_file:
+        with open(self.file_path, 'r', encoding='utf8') as csv_file:
             count = len(csv_file.readlines()) - 1
 
             csv_file.close()

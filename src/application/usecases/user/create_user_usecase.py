@@ -10,8 +10,10 @@ class CreateUserUsecase:
         self.repository = UserRepository()
 
     def execute(self, name, role, email, password, confirm_password):
+        user_count = self.repository.count()
+
         user_to_create = UserEntity({
-            'id': self.repository.count() + 1,
+            'id': user_count + 1,
             'name': name,
             'role': role,
             'email': email,
