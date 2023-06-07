@@ -38,7 +38,7 @@ class FacilitiesDataRepository:
                     'consumo_combustivel_mes': float(data_fields[15]),
                     'qualidade_ar_trabalho': float(data_fields[16]),
                     'residuos_eletronicos': float(data_fields[17]),
-                    'pilhas': float(data_fields[18]),
+                    'pilhas': int(data_fields[18]),
                 })
 
                 return human_data_entity
@@ -89,7 +89,7 @@ class FacilitiesDataRepository:
                     'consumo_combustivel_mes': float(data_fields[15]),
                     'qualidade_ar_trabalho': float(data_fields[16]),
                     'residuos_eletronicos': float(data_fields[17]),
-                    'pilhas': float(data_fields[18]),
+                    'pilhas': int(data_fields[18]),
                 })
 
                 data_list.append(data_entity)

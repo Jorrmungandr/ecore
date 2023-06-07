@@ -33,7 +33,7 @@ class CreateFacilitiesDataCLIController(CLIController):
             facilities_data_dto['consumo_combustivel_mes'] = float(input('Digite o consumo de combustível por mês: '))
             facilities_data_dto['qualidade_ar_trabalho'] = float(input('Digite a qualidade do ar de trabalho: '))
             facilities_data_dto['residuos_eletronicos'] = float(input('Digite a quantidade de resíduos eletrônicos: '))
-            facilities_data_dto['pilhas'] = float(input('Digite a quantidade de pilhas: '))
+            facilities_data_dto['pilhas'] = int(input('Digite a quantidade de pilhas: '))
 
             result = self.usecase.execute(facilities_data_dto)
 

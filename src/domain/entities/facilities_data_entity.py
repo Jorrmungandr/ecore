@@ -21,4 +21,4 @@ class FacilitiesDataEntity(BaseEntity):
     consumo_combustivel_mes = FloatType(required=True)
     qualidade_ar_trabalho = FloatType(required=True)
     residuos_eletronicos = FloatType(required=True)
-    pilhas = FloatType(required=True)
+    pilhas = IntType(required=True)
