@@ -45,7 +45,7 @@ try:
         current_keys = list(current_menu.keys())
 
         for index, key in enumerate(current_keys):
-            print(f'{index + 1} - {path_translation[".".join([*node_path, key])]}\n')
+            print(f'{index + 1} - {path_translation[".".join([*node_path, key])]}')
 
         if is_main_menu:
             print('0 - Sair\n')
