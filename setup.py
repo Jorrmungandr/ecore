@@ -63,6 +63,20 @@ tables = [
             'pilhas',
         ],
     },
+    {
+        'name': 'marketing_data',
+        'columns': [
+            'id',
+            'quantidade_empresas',
+            'projetos_executados_por_ano',
+            'nota_glassdoor',
+            'recomendam_cesar_amigo',
+            'perspectiva_positiva_cesar',
+            'indice_sistema_b',
+            'comunicacao_questoes_chave',
+            'atividades',
+        ],
+    },
 ]
 
 # Setup tables

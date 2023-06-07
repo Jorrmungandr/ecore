@@ -19,7 +19,7 @@ class FacilitiesDataRepository:
                 if float(data_fields[0]) != data_id:
                     continue
 
-                human_data_entity = FacilitiesDataEntity({
+                facilities_data_entity = FacilitiesDataEntity({
                     'id': float(data_fields[0]),
                     'consumo_mensal_de_energia_eletrica': float(data_fields[1]),
                     'prop_energia_mercado_livre': float(data_fields[2]),
@@ -41,7 +41,7 @@ class FacilitiesDataRepository:
                     'pilhas': int(data_fields[18]),
                 })
 
-                return human_data_entity
+                return facilities_data_entity
 
             csv_file.close()
 

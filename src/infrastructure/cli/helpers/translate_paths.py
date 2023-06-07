@@ -16,4 +16,9 @@ path_translation = {
     'facilities_data': 'Dados de Facilities',
     'facilities_data.create': 'Cadastrar Dados de Facilities',
     'facilities_data.read': 'Listar Dados de Facilities',
+
+    # Marketing Data
+    'marketing_data': 'Dados de Marketing',
+    'marketing_data.create': 'Cadastrar Dados de Marketing',
+    'marketing_data.read': 'Listar Dados de Marketing',
 }

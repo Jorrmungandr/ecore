@@ -23,6 +23,8 @@ class ListFacilitiesDataCLIController(CLIController):
 
             clear_console()
 
+            print('Dados de Facilities\n')
+
             print(tabulate(raw_data, tablefmt='orgtbl', headers=[
                 'cmee',
                 'peml',
