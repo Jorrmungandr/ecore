@@ -11,4 +11,9 @@ path_translation = {
     'human_capital_data': 'Dados de Capital Humano',
     'human_capital_data.create': 'Cadastrar Dados de Capital Humano',
     'human_capital_data.read': 'Listar Dados de Capital Humano',
+
+    # Facilities Data
+    'facilities_data': 'Dados de Facilities',
+    'facilities_data.create': 'Cadastrar Dados de Facilities',
+    'facilities_data.read': 'Listar Dados de Facilities',
 }

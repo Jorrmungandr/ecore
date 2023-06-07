@@ -46,7 +46,6 @@ class CreateHumanCapitalDataCLIController(CLIController):
 
             clear_console()
             print('Dados de Capital Humano cadastrados com sucesso:\n')
-            print(result)
 
             return result
         except DataError as error:

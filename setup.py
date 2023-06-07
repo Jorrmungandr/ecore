@@ -37,8 +37,32 @@ tables = [
             'vagas_recrutamento_interno',
             'detalhes_organizacionais',
             'periodo_frequencia_relatorio',
-        ]
-    }
+        ],
+    },
+    {
+        'name': 'facilities_data',
+        'columns': [
+            'id',
+            'consumo_mensal_de_energia_eletrica',
+            'prop_energia_mercado_livre',
+            'prop_energia_mercado_cativo',
+            'peso_residuos_solidos',
+            'gravimetria_residuo_organico',
+            'gravimetria_residuo_papel',
+            'gravimetria_residuo_plastico',
+            'gravimetria_residuo_metais',
+            'gravimetria_residuo_eletronicos',
+            'gravimetria_residuo_pilhas',
+            'prop_residuos_aterrados',
+            'prop_residuos_reciclados',
+            'consumo_agua_mes',
+            'prop_agua_tratada_consumida',
+            'consumo_combustivel_mes',
+            'qualidade_ar_trabalho',
+            'residuos_eletronicos',
+            'pilhas',
+        ],
+    },
 ]
 
 # Setup tables
