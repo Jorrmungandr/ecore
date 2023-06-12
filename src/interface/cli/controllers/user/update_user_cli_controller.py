@@ -1,10 +1,14 @@
-from src.application.exceptions.user.invalid_params_exception import InvalidParamsException
-from src.application.exceptions.user.invalid_confirm_password_exception import InvalidConfirmPasswordException
+from schematics.exceptions import DataError
+
 from src.application.exceptions.auth.user_not_found_exception import UserNotFoundException
 
 from src.application.usecases.user.update_user_usecase import UpdateUserUsecase
 
-class UpdateUserCLIController:
+from src.domain.controllers.cli_controller import CLIController
+from src.infrastructure.helpers.authorize import authorize
+
+@authorize('admin')
+class UpdateUserCLIController(CLIController):
     def __init__(self):
         self.usecase = UpdateUserUsecase()
 
@@ -20,7 +24,7 @@ class UpdateUserCLIController:
             print(result)
 
             return result
-        except InvalidParamsException as error:
-            print(f'Erro de validação de parâmetro: {error.message}')
+        except DataError as error:
+            print(f'\nErro de validação de parâmetro: {", ".join(error.to_primitive().keys())}')
         except UserNotFoundException:
             print('Usuário não encontrado.')
