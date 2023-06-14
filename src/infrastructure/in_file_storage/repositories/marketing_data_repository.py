@@ -21,14 +21,15 @@ class MarketingDataRepository:
 
                 marketing_data_entity = MarketingDataEntity({
                     'id': float(data_fields[0]),
-                    'quantidade_empresas': int(data_fields[1]),
-                    'projetos_executados_por_ano': int(data_fields[2]),
-                    'nota_glassdoor': float(data_fields[3]),
-                    'recomendam_cesar_amigo': float(data_fields[4]),
-                    'perspectiva_positiva_cesar': float(data_fields[5]),
-                    'indice_sistema_b': float(data_fields[6]),
-                    'comunicacao_questoes_chave': data_fields[7],
-                    'atividades': data_fields[8],
+                    'month': data_fields[1],
+                    'quantidade_empresas': int(data_fields[2]),
+                    'projetos_executados_por_ano': int(data_fields[3]),
+                    'nota_glassdoor': float(data_fields[4]),
+                    'recomendam_cesar_amigo': float(data_fields[5]),
+                    'perspectiva_positiva_cesar': float(data_fields[6]),
+                    'indice_sistema_b': float(data_fields[7]),
+                    'comunicacao_questoes_chave': data_fields[8],
+                    'atividades': data_fields[9],
                 })
 
                 return marketing_data_entity
@@ -62,14 +63,15 @@ class MarketingDataRepository:
 
                 marketing_data_entity = MarketingDataEntity({
                     'id': float(data_fields[0]),
-                    'quantidade_empresas': int(data_fields[1]),
-                    'projetos_executados_por_ano': int(data_fields[2]),
-                    'nota_glassdoor': float(data_fields[3]),
-                    'recomendam_cesar_amigo': float(data_fields[4]),
-                    'perspectiva_positiva_cesar': float(data_fields[5]),
-                    'indice_sistema_b': float(data_fields[6]),
-                    'comunicacao_questoes_chave': data_fields[7],
-                    'atividades': data_fields[8],
+                    'month': data_fields[1],
+                    'quantidade_empresas': int(data_fields[2]),
+                    'projetos_executados_por_ano': int(data_fields[3]),
+                    'nota_glassdoor': float(data_fields[4]),
+                    'recomendam_cesar_amigo': float(data_fields[5]),
+                    'perspectiva_positiva_cesar': float(data_fields[6]),
+                    'indice_sistema_b': float(data_fields[7]),
+                    'comunicacao_questoes_chave': data_fields[8],
+                    'atividades': data_fields[9],
                 })
 
                 data_list.append(marketing_data_entity)

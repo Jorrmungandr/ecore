@@ -16,6 +16,7 @@ class CreateMarketingDataCLIController(CLIController):
         try:
             marketing_data_dto = {}
 
+            marketing_data_dto['month'] = input('Digite o mês ao qual os dados correspondem (MM/AAAA): ')
             marketing_data_dto['quantidade_empresas'] = int(input('Digite a quantidade de empresas do porto digital: '))
             marketing_data_dto['projetos_executados_por_ano'] = int(input('Digite o número de projetos executados por ano: '))
             marketing_data_dto['nota_glassdoor'] = float(input('Digite a nota do Glassdoor: '))

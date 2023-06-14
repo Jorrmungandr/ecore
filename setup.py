@@ -12,6 +12,7 @@ tables = [
         'name': 'human_capital_data',
         'columns': [
             'id',
+            'mes',
             'colaboradores_lgbtqia',
             'colaboradores_negros',
             'colaboradoras_mulheres',
@@ -43,6 +44,7 @@ tables = [
         'name': 'facilities_data',
         'columns': [
             'id',
+            'mes',
             'consumo_mensal_de_energia_eletrica',
             'prop_energia_mercado_livre',
             'prop_energia_mercado_cativo',
@@ -67,6 +69,7 @@ tables = [
         'name': 'marketing_data',
         'columns': [
             'id',
+            'mes',
             'quantidade_empresas',
             'projetos_executados_por_ano',
             'nota_glassdoor',

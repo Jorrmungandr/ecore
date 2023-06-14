@@ -1,9 +1,10 @@
-from schematics.types import IntType, FloatType, StringType
+from schematics.types import IntType, FloatType, StringType, DateTimeType
 
 from src.domain.entities.base_entity import BaseEntity
 
 class MarketingDataEntity(BaseEntity):
     id = IntType(required=True)
+    month = DateTimeType(('%m/%Y', '%Y-%m-%d %H:%M:%S'), required=True)
     quantidade_empresas = IntType(required=True)
     projetos_executados_por_ano = IntType(required=True)
     nota_glassdoor = FloatType(required=True)

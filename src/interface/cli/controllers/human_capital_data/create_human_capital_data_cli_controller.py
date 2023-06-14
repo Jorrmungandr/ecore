@@ -16,6 +16,7 @@ class CreateHumanCapitalDataCLIController(CLIController):
         try:
             human_capital_data_dto = {}
 
+            human_capital_data_dto['month'] = input('Digite o mês ao qual os dados correspondem (MM/AAAA): ')
             human_capital_data_dto['colaboradores_lgbtqia'] = int(input('Digite o número de colaboradores LGBTQIA+: '))
             human_capital_data_dto['colaboradores_negros'] = int(input('Digite o número de colaboradores negros: '))
             human_capital_data_dto['colaboradoras_mulheres'] = int(input('Digite o número de colaboradoras mulheres: '))

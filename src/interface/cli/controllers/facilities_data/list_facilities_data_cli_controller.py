@@ -25,8 +25,9 @@ class ListFacilitiesDataCLIController(CLIController):
 
             print('Dados de Facilities\n')
 
-            print(tabulate(raw_data, tablefmt='orgtbl', headers=[
+            print(tabulate(raw_data, tablefmt='github', headers=[
                 'ID',
+                'mês',
                 'cmee',
                 'peml',
                 'pemc',

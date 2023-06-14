@@ -16,6 +16,7 @@ class CreateFacilitiesDataCLIController(CLIController):
         try:
             facilities_data_dto = {}
 
+            facilities_data_dto['month'] = input('Digite o mês ao qual os dados correspondem (MM/AAAA): ')
             facilities_data_dto['consumo_mensal_de_energia_eletrica'] = float(input('Digite o consumo mensal de energia elétrica: '))
             facilities_data_dto['prop_energia_mercado_livre'] = float(input('Digite a proporção de energia do mercado livre: '))
             facilities_data_dto['prop_energia_mercado_cativo'] = float(input('Digite a proporção de energia do mercado cativo: '))

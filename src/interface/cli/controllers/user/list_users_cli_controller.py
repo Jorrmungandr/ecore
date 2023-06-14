@@ -21,7 +21,7 @@ class ListUsersCLIController(CLIController):
 
         print('Usuários\n')
 
-        print(tabulate(users_without_password, tablefmt='orgtbl', headers=[
+        print(tabulate(users_without_password, tablefmt='github', headers=[
             'ID',
             'nome',
             'tipo',
