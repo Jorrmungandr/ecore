@@ -26,6 +26,7 @@ class ListFacilitiesDataCLIController(CLIController):
             print('Dados de Facilities\n')
 
             print(tabulate(raw_data, tablefmt='orgtbl', headers=[
+                'ID',
                 'cmee',
                 'peml',
                 'pemc',

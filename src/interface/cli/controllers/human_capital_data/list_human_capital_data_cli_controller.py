@@ -26,7 +26,7 @@ class ListHumanCapitalDataCLIController(CLIController):
             print('Dados de Capital Humano\n')
 
             print(tabulate(raw_data, tablefmt='orgtbl', headers=[
-                'id',
+                'ID',
                 'cl',
                 'cn',
                 'cm',
