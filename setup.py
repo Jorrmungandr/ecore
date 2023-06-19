@@ -80,6 +80,17 @@ tables = [
             'atividades',
         ],
     },
+    {
+        'name': 'council_data',
+        'columns': [
+            'id',
+            'mes',
+            'governanca_estrutura_composicao',
+            'presidente_conselho',
+            'papel_presidente_conselho_gestao_impacto',
+            'delegacao_responsabilidade_gestao_impacto',
+        ],
+    },
 ]
 
 # Setup tables
