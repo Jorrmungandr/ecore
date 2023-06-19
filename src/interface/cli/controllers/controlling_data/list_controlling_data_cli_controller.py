@@ -1,37 +1,35 @@
 from tabulate import tabulate
 from schematics.exceptions import DataError
 
-from src.application.usecases.council_data.list_council_data_usecase import ListCouncilDataUsecase
+from src.application.usecases.controlling_data.list_controlling_data_usecase import ListControllingDataUsecase
 
 from src.domain.controllers.cli_controller import CLIController
-from src.domain.entities.council_data_entity import CouncilDataEntity
+from src.domain.entities.controlling_data_entity import ControllingDataEntity
 
 from src.infrastructure.cli.helpers.clear_console import clear_console
 from src.infrastructure.helpers.authorize import authorize
 
 
-@authorize('admin', 'conselho')
-class ListCouncilDataCLIController(CLIController):
+@authorize('admin', 'controladoria')
+class ListControllingDataCLIController(CLIController):
     def __init__(self):
-        self.usecase = ListCouncilDataUsecase()
+        self.usecase = ListControllingDataUsecase()
 
     def execute(self):
         try:
-            result: list[CouncilDataEntity] = self.usecase.execute()
+            result: list[ControllingDataEntity] = self.usecase.execute()
 
             raw_data = list(map(lambda entity: entity.values(), result))
 
             clear_console()
 
-            print('Dados do Conselho\n')
+            print('Dados da Controladoria\n')
 
             print(tabulate(raw_data, tablefmt='github', headers=[
                 'ID',
                 'mês',
-                'governanca_estrutura_composicao',
-                'presidente_conselho',
-                'papel_presidente_conselho_gestao_impacto',
-                'delegacao_responsabilidade_gestao_impacto',
+                'ebitda',
+                'faturamento',
             ]))
 
             return result

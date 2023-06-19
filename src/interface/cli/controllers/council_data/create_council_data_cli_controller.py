@@ -30,5 +30,3 @@ class CreateCouncilDataCLIController(CLIController):
             return result
         except DataError as error:
             print(f'\nErro de validação de parâmetro: {", ".join(error.to_primitive().keys())}')
-        except ValueError:
-            print('\nValor inválido inserido')

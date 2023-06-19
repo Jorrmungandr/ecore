@@ -91,6 +91,15 @@ tables = [
             'delegacao_responsabilidade_gestao_impacto',
         ],
     },
+    {
+        'name': 'controlling_data',
+        'columns': [
+            'id',
+            'mes',
+            'ebitda',
+            'faturamento',
+        ],
+    },
 ]
 
 # Setup tables

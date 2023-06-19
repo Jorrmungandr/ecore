@@ -26,4 +26,9 @@ path_translation = {
     'council_data': 'Dados do Conselho',
     'council_data.create': 'Cadastrar Dados do Conselho',
     'council_data.read': 'Listar Dados do Conselho',
+
+    # Controlling Data
+    'controlling_data': 'Dados da Controladoria',
+    'controlling_data.create': 'Cadastrar Dados da Controladoria',
+    'controlling_data.read': 'Listar Dados da Controladoria',
 }
