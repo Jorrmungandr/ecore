@@ -131,3 +131,23 @@ class UserRepository:
             csv_file.close()
 
             return users
+
+    def delete_user(self, _id: str) -> None:
+        with open(self.file_path, 'r+', encoding='utf8') as csv_file:
+            users = csv_file.readlines()
+
+            header = users[0]
+
+            users.remove(header)
+
+            for index, user in enumerate(users):
+                user_data = user.strip().split(',')
+
+                if user_data[0] == str(_id):
+                    users.remove(users[index])
+
+            csv_file.truncate(0)
+            csv_file.seek(0)
+            csv_file.write(header)
+            csv_file.writelines(users)
+            csv_file.close()
