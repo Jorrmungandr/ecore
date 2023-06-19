@@ -6,16 +6,16 @@ O projeto Ecore é uma aplicação em Python que visa automatizar e unificar o f
 
 Para configurar o projeto, siga as instruções abaixo:
 
-1. Crie um ambiente virtual e ative-o:
-   ```bash
-   python -m venv venv
-   source venv/bin/activate
-   ```
-
-2. Clone o repositório do projeto:
+1. Clone o repositório do projeto:
    ```bash
    git clone https://github.com/Jorrmungandr/ecore
    cd ecore
+   ```
+
+2. Crie um ambiente virtual e ative-o:
+   ```bash
+   python -m venv venv
+   source venv/bin/activate
    ```
 
 3. Instale as dependências do projeto:
