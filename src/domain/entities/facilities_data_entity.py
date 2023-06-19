@@ -4,7 +4,7 @@ from src.domain.entities.base_entity import BaseEntity
 
 class FacilitiesDataEntity(BaseEntity):
     id = IntType(required=True)
-    month = DateTimeType(('%m/%Y', '%Y-%m-%d %H:%M:%S'), required=True)
+    month = DateTimeType('%m/%Y', required=True)
     consumo_mensal_de_energia_eletrica = FloatType(required=True)
     prop_energia_mercado_livre = FloatType(required=True)
     prop_energia_mercado_cativo = FloatType(required=True)

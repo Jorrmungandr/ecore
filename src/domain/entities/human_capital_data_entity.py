@@ -4,7 +4,7 @@ from src.domain.entities.base_entity import BaseEntity
 
 class HumanCapitalDataEntity(BaseEntity):
     id = IntType(required=True)
-    month = DateTimeType(('%m/%Y', '%Y-%m-%d %H:%M:%S'), required=True)
+    month = DateTimeType('%m/%Y', required=True)
     colaboradores_lgbtqia = IntType(required=True)
     colaboradores_negros = IntType(required=True)
     colaboradoras_mulheres = IntType(required=True)
