@@ -1,9 +1,9 @@
 from src.domain.controllers.cli_controller import CLIController
 
 def filter_menu_tree_by_rbac(menu_tree, user_requester_role):
-    # Filter the menu tree recursively so that the only leafs (controllers)
-    # left are the ones that include `user_requester_role` in
-    # the `CLIController.allowed_roles` property
+    # Aqui eu filtro a árvore até que as únicas folhas (controllers)
+    # restantes sejam as que incluem a variável `user_requester_role`
+    # na property `CLIController.allowed_roles`
 
     def search_and_filter(node):
         if isinstance(node, CLIController):
@@ -20,7 +20,7 @@ def filter_menu_tree_by_rbac(menu_tree, user_requester_role):
                 if filtered_value is not None:
                     filtered_node[key] = filtered_value
 
-            # If a menu node has no items it shouldn't show up
+            # Se um submenu não tem itens ele não deve aparecer
             if len(filtered_node.items()) == 0:
                 return None
 

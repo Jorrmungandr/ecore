@@ -2,6 +2,8 @@ from schematics.exceptions import DataError
 
 from src.application.usecases.human_capital_data.create_human_capital_data_usecase import CreateHumanCapitalDataUsecase
 
+from src.application.exceptions.data.data_already_exists_exception import DataAlreadyExistsException
+
 from src.domain.controllers.cli_controller import CLIController
 
 from src.infrastructure.cli.helpers.clear_console import clear_console
@@ -16,6 +18,7 @@ class CreateHumanCapitalDataCLIController(CLIController):
         try:
             human_capital_data_dto = {}
 
+            human_capital_data_dto['month'] = input('Digite o mês ao qual os dados correspondem (MM/AAAA): ')
             human_capital_data_dto['colaboradores_lgbtqia'] = int(input('Digite o número de colaboradores LGBTQIA+: '))
             human_capital_data_dto['colaboradores_negros'] = int(input('Digite o número de colaboradores negros: '))
             human_capital_data_dto['colaboradoras_mulheres'] = int(input('Digite o número de colaboradoras mulheres: '))
@@ -52,3 +55,5 @@ class CreateHumanCapitalDataCLIController(CLIController):
             print(f'\nErro de validação de parâmetro: {", ".join(error.to_primitive().keys())}')
         except ValueError:
             print('\nValor inválido inserido')
+        except DataAlreadyExistsException:
+            print('\n Já existe um dado cadastrado para esse mês')

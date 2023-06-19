@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from schematics.models import Model
 from schematics.exceptions import DataError
 
@@ -13,3 +15,12 @@ class BaseEntity(Model):
 
         if errors:
             raise DataError(errors)
+
+    def values(self):
+        values = super(BaseEntity, self).values()
+
+        for index, value in enumerate(values):
+            if isinstance(value, datetime):
+                values[index] = value.strftime('%m/%Y')
+
+        return values

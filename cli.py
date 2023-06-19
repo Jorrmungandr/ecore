@@ -10,7 +10,7 @@ from src.infrastructure.cli.helpers.authorized_menu_paths import filter_menu_tre
 from src.domain.controllers.cli_controller import CLIController
 
 try:
-    # Login Cycle
+    # Ciclo de Login
     login_controller = LoginCLIController()
 
     clear_console()
@@ -26,7 +26,7 @@ try:
 
     authorized_menu_tree = filter_menu_tree_by_rbac(menu_tree, auth_user.role)
 
-    # Menu cycle (recursion)
+    # Ciclo de menu (recursão)
     def render_menu(node_path):
         clear_console()
 
@@ -52,7 +52,7 @@ try:
         else:
             print('0 - Voltar\n')
 
-        # Input select cycle
+        # Ciclo de selecionar opções
         while True:
             selected_option = input('Opção selecionada: ')
 

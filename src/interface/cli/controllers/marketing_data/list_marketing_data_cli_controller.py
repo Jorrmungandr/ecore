@@ -25,7 +25,9 @@ class ListMarketingDataCLIController(CLIController):
 
             print('Dados de Marketing\n')
 
-            print(tabulate(raw_data, tablefmt='orgtbl', headers=[
+            print(tabulate(raw_data, tablefmt='github', headers=[
+                'ID',
+                'mês',
                 'quantidade_empresas',
                 'projetos_executados',
                 'nota_glassdoor',

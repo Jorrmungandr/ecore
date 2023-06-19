@@ -6,13 +6,10 @@ user_roles = (
     'admin',
     'departamento_pessoal',
     'capital_humano',
-    'cesar_school',
     'marketing',
-    'cultura',
     'facilities',
     'controladoria',
     'conselho',
-    'c_level'
 )
 
 class UserEntity(BaseEntity):
