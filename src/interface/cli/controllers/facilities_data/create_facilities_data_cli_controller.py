@@ -2,6 +2,8 @@ from schematics.exceptions import DataError
 
 from src.application.usecases.facilities_data.create_facilities_data_usecase import CreateFacilitiesDataUsecase
 
+from src.application.exceptions.data.data_already_exists_exception import DataAlreadyExistsException
+
 from src.domain.controllers.cli_controller import CLIController
 
 from src.infrastructure.cli.helpers.clear_console import clear_console
@@ -46,3 +48,5 @@ class CreateFacilitiesDataCLIController(CLIController):
             print(f'\nErro de validação de parâmetro: {", ".join(error.to_primitive().keys())}')
         except ValueError:
             print('\nValor inválido inserido')
+        except DataAlreadyExistsException:
+            print('\n Já existe um dado cadastrado para esse mês')

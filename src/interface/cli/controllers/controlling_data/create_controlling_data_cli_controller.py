@@ -1,5 +1,7 @@
 from schematics.exceptions import DataError
 
+from src.application.exceptions.data.data_already_exists_exception import DataAlreadyExistsException
+
 from src.application.usecases.controlling_data.create_controlling_data_usecase import CreateControllingDataUsecase
 
 from src.domain.controllers.cli_controller import CLIController
@@ -30,3 +32,5 @@ class CreateControllingDataCLIController(CLIController):
             print(f'\nErro de validação de parâmetro: {", ".join(error.to_primitive().keys())}')
         except ValueError:
             print('\nValor inválido inserido')
+        except DataAlreadyExistsException:
+            print('\n Já existe um dado cadastrado para esse mês')
