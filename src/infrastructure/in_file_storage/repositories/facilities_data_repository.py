@@ -3,13 +3,50 @@ from src.domain.entities.facilities_data_entity import FacilitiesDataEntity
 class FacilitiesDataRepository:
     file_path = './db/facilities_data.csv'
 
-    def count(self):
+    def count(self) -> int:
         with open(self.file_path, 'r', encoding='utf8') as csv_file:
             count = len(csv_file.readlines()) - 1
 
             csv_file.close()
 
             return count
+
+    def get_data_by_month(self, month: str) -> FacilitiesDataEntity | None:
+        with open(self.file_path, 'r', encoding='utf8') as csv_file:
+            for data_line in csv_file.readlines()[1:]:
+                data_fields = data_line.strip().split(',')
+
+                if data_fields[1] != month:
+                    continue
+
+                facilities_data_entity = FacilitiesDataEntity({
+                    'id': float(data_fields[0]),
+                    'month': data_fields[1],
+                    'consumo_mensal_de_energia_eletrica': float(data_fields[2]),
+                    'prop_energia_mercado_livre': float(data_fields[3]),
+                    'prop_energia_mercado_cativo': float(data_fields[4]),
+                    'peso_residuos_solidos': float(data_fields[5]),
+                    'gravimetria_residuo_organico': float(data_fields[6]),
+                    'gravimetria_residuo_papel': float(data_fields[7]),
+                    'gravimetria_residuo_plastico': float(data_fields[8]),
+                    'gravimetria_residuo_metais': float(data_fields[9]),
+                    'gravimetria_residuo_eletronicos': float(data_fields[10]),
+                    'gravimetria_residuo_pilhas': float(data_fields[11]),
+                    'prop_residuos_aterrados': float(data_fields[12]),
+                    'prop_residuos_reciclados': float(data_fields[13]),
+                    'consumo_agua_mes': float(data_fields[14]),
+                    'prop_agua_tratada_consumida': float(data_fields[15]),
+                    'consumo_combustivel_mes': float(data_fields[16]),
+                    'qualidade_ar_trabalho': float(data_fields[17]),
+                    'residuos_eletronicos': float(data_fields[18]),
+                    'pilhas': int(data_fields[19]),
+                })
+
+                return facilities_data_entity
+
+            csv_file.close()
+
+            return None
 
     def get_data_by_id(self, data_id: float):
         with open(self.file_path, 'r', encoding='utf8') as csv_file:
@@ -48,7 +85,7 @@ class FacilitiesDataRepository:
 
             return None
 
-    def create_data(self, facilities_data_entity: FacilitiesDataEntity):
+    def create_data(self, facilities_data_entity: FacilitiesDataEntity) -> FacilitiesDataEntity:
         with open(self.file_path, 'a', encoding='utf8') as csv_file:
             facilities_values = facilities_data_entity.values()
 
@@ -64,7 +101,7 @@ class FacilitiesDataRepository:
 
             return facilities_data_entity
 
-    def list_data(self):
+    def list_data(self) -> list[FacilitiesDataEntity]:
         data_list = []
 
         with open(self.file_path, 'r', encoding='utf8') as csv_file:

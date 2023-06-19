@@ -17,7 +17,7 @@ class BaseEntity(Model):
             raise DataError(errors)
 
     def values(self):
-        values = super().values()
+        values = super(BaseEntity, self).values()
 
         for index, value in enumerate(values):
             if isinstance(value, datetime):
