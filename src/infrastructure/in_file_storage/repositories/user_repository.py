@@ -146,6 +146,8 @@ class UserRepository:
                 if user_data[0] == str(_id):
                     users.remove(users[index])
 
+            users[-1] = users[-1].replace('\n', '')
+
             csv_file.truncate(0)
             csv_file.seek(0)
             csv_file.write(header)
