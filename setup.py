@@ -102,6 +102,8 @@ tables = [
     },
 ]
 
+has_user_table = os.path.exists('./db/users.csv')
+
 # Setup tables
 for table in tables:
     if os.path.exists(f'./db/{table["name"]}.csv'):
@@ -114,7 +116,7 @@ for table in tables:
 
             table_file.close()
 
-if not os.path.exists('./db/users.csv'):
+if not has_user_table:
     with open('./db/users.csv', 'w', encoding='utf8') as users_file:
         admin_user = ['1', 'Admin', 'admin', 'admin@cesar.school', 'Password!123']
         users_file.write(f'\n{",".join(admin_user)}')
